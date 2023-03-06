@@ -8,10 +8,14 @@ class MyHomePage extends StatelessWidget {
   final items = List<String>.generate(10, (i) => "Item $i");
 
   final List<Track> tracks = [
-    Track("https://picsum.photos/id/1/200/200", "track1", "artist1"),
-    Track("https://picsum.photos/id/2/200/200", "track2", "artist2"),
-    Track("https://picsum.photos/id/3/200/200", "track3", "artist3"),
-    Track("https://picsum.photos/id/4/200/200", "track4", "artist4"),
+    Track("https://picsum.photos/id/1/200/200", "track1", "artist1",
+        const Duration(minutes: 5, seconds: 30)),
+    Track("https://picsum.photos/id/2/200/200", "track2", "artist2",
+        const Duration(minutes: 5, seconds: 30)),
+    Track("https://picsum.photos/id/3/200/200", "track3", "artist3",
+        const Duration(minutes: 5, seconds: 30)),
+    Track("https://picsum.photos/id/4/200/200", "track4", "artist4",
+        const Duration(minutes: 5, seconds: 30)),
   ];
 
   @override
