@@ -13,7 +13,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData.dark(),
+      // ダークテーマ
+      theme: ThemeData.dark().copyWith(
+        // bottomNavigationBarの色を変更
+        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+          selectedItemColor: Colors.white,
+          unselectedItemColor: Colors.grey,
+        ),
+      ),
       onGenerateRoute: AppRouter.generateRoute,
       // フォント対応
       localizationsDelegates: const [

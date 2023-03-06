@@ -23,6 +23,25 @@ class _MyHomePageState extends State<MyHomePage> {
         const Duration(minutes: 5, seconds: 30)),
   ];
 
+  final List<BottomNavigationBarItem> _bottomNavigationBarItems = [
+    const BottomNavigationBarItem(
+      icon: Icon(Icons.settings),
+      label: 'Settings',
+    ),
+    const BottomNavigationBarItem(
+      icon: Icon(Icons.home),
+      label: 'Home',
+    ),
+    const BottomNavigationBarItem(
+      icon: Icon(Icons.favorite),
+      label: 'Favorite',
+    ),
+    const BottomNavigationBarItem(
+      icon: Icon(Icons.favorite),
+      label: 'Favorite',
+    ),
+  ];
+
   var _selectIndex = 0;
 
   void _onTapItem(int index) {
@@ -51,24 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
         currentIndex: _selectIndex, //選択中のインデックス
         onTap: _onTapItem, //タップで選択中のインデックスを変更
         type: BottomNavigationBarType.fixed,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Settings',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
-            label: 'Favorite',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
-            label: 'Favorite',
-          ),
-        ],
+        items: _bottomNavigationBarItems,
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
