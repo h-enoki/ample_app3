@@ -12,7 +12,7 @@ class AppRouter {
         return _buildRoute(MyHomePage());
 
       case AppRoutes.player:
-        return _buildRoute(const PlayerPage());
+        return _buildRoute(const PlayerPage(), settings: settings);
 
       default:
         return null;

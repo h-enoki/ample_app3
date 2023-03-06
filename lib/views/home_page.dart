@@ -7,7 +7,12 @@ class MyHomePage extends StatelessWidget {
 
   final items = List<String>.generate(10, (i) => "Item $i");
 
-  final Track track = Track("hoge", "track1", "artist1");
+  final List<Track> tracks = [
+    Track("https://picsum.photos/id/1/200/200", "track1", "artist1"),
+    Track("https://picsum.photos/id/2/200/200", "track2", "artist2"),
+    Track("https://picsum.photos/id/3/200/200", "track3", "artist3"),
+    Track("https://picsum.photos/id/4/200/200", "track4", "artist4"),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -35,26 +40,30 @@ class MyHomePage extends StatelessWidget {
             height: 230,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount: items.length,
+              itemCount: tracks.length,
               itemBuilder: (context, index) {
                 return GestureDetector(
                   // TODO 押した感を出したい
                   onTap: () {
                     debugPrint("onTap：$index");
+                    // 画面遷移、引数としてtrackを渡す
                     Navigator.pushNamed(context, AppRoutes.player,
-                        arguments: track);
+                        arguments: tracks[index]);
                   },
                   child: SizedBox(
                     width: 160,
                     child: Column(
                       children: [
-                        Container(
+                        SizedBox(
                           height: 150,
                           width: 150,
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Colors.black12),
-                            borderRadius: BorderRadius.circular(15),
-                            color: index.isEven ? Colors.blue : Colors.yellow,
+                          child: ClipRRect(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(10)),
+                            child: Image.network(
+                              tracks[index].image,
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         ),
                         ListTile(
