@@ -21,7 +21,8 @@ class _PlayerPageState extends State<PlayerPage> {
         debugPrint("_changeSlider");
         _value = e;
         debugPrint("_value:$_value");
-        currentPlayTime = const Duration(minutes: 1, seconds: 0);
+        currentPlayTime = Duration(seconds: _value.toInt());
+        debugPrint("currentPlayTime:$currentPlayTime");
       });
   // void _startSlider(double e) => setState(() {
   //       debugPrint("_startSlider");
@@ -51,14 +52,13 @@ class _PlayerPageState extends State<PlayerPage> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
+        // AppBarを透過
+        backgroundColor: Colors.transparent,
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const SizedBox(
-            height: 20,
-          ),
           SizedBox(
             height: 350,
             width: 350,
@@ -98,8 +98,8 @@ class _PlayerPageState extends State<PlayerPage> {
             child: Slider(
               value: _value,
               min: 0,
-              max: 60,
-              divisions: 5,
+              max: playtime.inSeconds.toDouble(),
+              divisions: playtime.inSeconds,
               onChanged: _changeSlider,
               // onChangeStart: _startSlider,
               // onChangeEnd: _endSlider,

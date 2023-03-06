@@ -2,14 +2,19 @@ import 'package:ample_app3/models/Track.dart';
 import 'package:ample_app3/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 
-class MyHomePage extends StatelessWidget {
-  MyHomePage({super.key});
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key});
 
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
   final items = List<String>.generate(10, (i) => "Item $i");
 
   final List<Track> tracks = [
     Track("https://picsum.photos/id/1/200/200", "track1", "artist1",
-        const Duration(minutes: 5, seconds: 30)),
+        const Duration(minutes: 6, seconds: 30)),
     Track("https://picsum.photos/id/2/200/200", "track2", "artist2",
         const Duration(minutes: 5, seconds: 30)),
     Track("https://picsum.photos/id/3/200/200", "track3", "artist3",
@@ -17,6 +22,14 @@ class MyHomePage extends StatelessWidget {
     Track("https://picsum.photos/id/4/200/200", "track4", "artist4",
         const Duration(minutes: 5, seconds: 30)),
   ];
+
+  var _selectIndex = 0;
+
+  void _onTapItem(int index) {
+    setState(() {
+      _selectIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +44,29 @@ class MyHomePage extends StatelessWidget {
               size: 30,
             ),
             onPressed: () => {},
+          ),
+        ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectIndex, //選択中のインデックス
+        onTap: _onTapItem, //タップで選択中のインデックスを変更
+        type: BottomNavigationBarType.fixed,
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: 'Settings',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.favorite),
+            label: 'Favorite',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.favorite),
+            label: 'Favorite',
           ),
         ],
       ),
@@ -71,8 +107,8 @@ class MyHomePage extends StatelessWidget {
                           ),
                         ),
                         ListTile(
-                          title: Text(items[index]),
-                          subtitle: const Text("subtitle."),
+                          title: Text(tracks[index].title),
+                          subtitle: Text(tracks[index].artist),
                         ),
                       ],
                     ),
@@ -92,7 +128,7 @@ class MyHomePage extends StatelessWidget {
                 // 縦に並べる数
                 crossAxisCount: 2,
                 // グリッドの縦横比
-                childAspectRatio: 0.7,
+                childAspectRatio: 2 / 3,
                 // グリッド間のスペース
                 mainAxisSpacing: 10,
                 crossAxisSpacing: 10,
