@@ -1,5 +1,5 @@
-import 'package:ample_app3/models/Track.dart';
-import 'package:ample_app3/routes/app_routes.dart';
+import 'package:ample_app3/src/models/Track.dart';
+import 'package:ample_app3/src/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 
 class MyHomePage extends StatefulWidget {

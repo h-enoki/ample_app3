@@ -1,4 +1,4 @@
-import 'package:ample_app3/routes/app_router.dart';
+import 'package:ample_app3/src/routes/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 

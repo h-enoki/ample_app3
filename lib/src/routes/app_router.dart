@@ -1,6 +1,5 @@
-import 'package:ample_app3/models/Track.dart';
-import 'package:ample_app3/views/home_page.dart';
-import 'package:ample_app3/views/player_page.dart';
+import 'package:ample_app3/src/views/home_page.dart';
+import 'package:ample_app3/src/views/player_page.dart';
 import 'package:flutter/material.dart';
 
 import 'app_routes.dart';
@@ -9,7 +8,7 @@ class AppRouter {
   static Route<dynamic>? generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case AppRoutes.home:
-        return _buildRoute(MyHomePage());
+        return _buildRoute(const MyHomePage());
 
       case AppRoutes.player:
         return _buildRoute(const PlayerPage(), settings: settings);
