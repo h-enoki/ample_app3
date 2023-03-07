@@ -12,6 +12,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final items = List<String>.generate(10, (i) => "Item $i");
 
+  // 表示する楽曲のデータ
   final List<Track> tracks = [
     Track("https://picsum.photos/id/1/200/200", "track1", "artist1",
         const Duration(minutes: 6, seconds: 30)),
@@ -23,28 +24,31 @@ class _MyHomePageState extends State<MyHomePage> {
         const Duration(minutes: 5, seconds: 30)),
   ];
 
+  // ボトムシートのアイテム
   final List<BottomNavigationBarItem> _bottomNavigationBarItems = [
     const BottomNavigationBarItem(
-      icon: Icon(Icons.settings),
-      label: 'Settings',
-    ),
-    const BottomNavigationBarItem(
       icon: Icon(Icons.home),
-      label: 'Home',
+      label: "ホーム",
     ),
     const BottomNavigationBarItem(
-      icon: Icon(Icons.favorite),
-      label: 'Favorite',
+      icon: Icon(Icons.search),
+      label: '検索',
     ),
     const BottomNavigationBarItem(
-      icon: Icon(Icons.favorite),
-      label: 'Favorite',
+      icon: Icon(Icons.playlist_play),
+      label: 'プレイリスト',
+    ),
+    const BottomNavigationBarItem(
+      icon: Icon(Icons.account_circle_outlined),
+      label: 'アカウント',
     ),
   ];
 
+  // 選択中のボトムシートのインデックス
   var _selectIndex = 0;
 
-  void _onTapItem(int index) {
+  // ボトムシートをタップ時
+  void _onTabTapped(int index) {
     setState(() {
       _selectIndex = index;
     });
@@ -67,8 +71,8 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectIndex, //選択中のインデックス
-        onTap: _onTapItem, //タップで選択中のインデックスを変更
+        currentIndex: _selectIndex,
+        onTap: _onTabTapped,
         type: BottomNavigationBarType.fixed,
         items: _bottomNavigationBarItems,
       ),
