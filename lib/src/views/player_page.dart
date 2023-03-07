@@ -1,4 +1,5 @@
 import 'package:ample_app3/src/models/Track.dart';
+import 'package:ample_app3/src/utils/duration_formatter.dart';
 import 'package:flutter/material.dart';
 
 class PlayerPage extends StatefulWidget {
@@ -106,14 +107,14 @@ class _PlayerPageState extends State<PlayerPage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  currentPlayTime.toString(),
+                  DurationEx.formatDurationToMinutesSeconds(currentPlayTime),
                   style: const TextStyle(
                     fontSize: 16,
                     color: Colors.grey,
                   ),
                 ),
                 Text(
-                  playtime.toString(),
+                  DurationEx.formatDurationToMinutesSeconds(playtime),
                   style: const TextStyle(
                     fontSize: 16,
                     color: Colors.grey,
