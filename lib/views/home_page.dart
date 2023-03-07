@@ -146,12 +146,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   decoration: BoxDecoration(
                     border: Border.all(color: Colors.black12),
                     borderRadius: BorderRadius.circular(15),
-                    // color: index.isEven ? Colors.blue : Colors.yellow,
                     // グラデーション
                     gradient: LinearGradient(
                       begin: FractionalOffset.topLeft,
                       end: FractionalOffset.bottomRight,
-                      // colors: [Colors.redAccent, Colors.orangeAccent],
                       colors: () {
                         switch (index) {
                           case 0:
@@ -171,7 +169,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         }
                       }(),
                       stops: const [
-                        0.0,
+                        0.3,
                         1.0,
                       ],
                     ),
