@@ -10,19 +10,20 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final items = List<String>.generate(10, (i) => "Item $i");
-
   // 表示する楽曲のデータ
   final List<Track> tracks = [
-    Track("https://picsum.photos/id/1/200/200", "track1", "artist1",
+    Track("https://picsum.photos/id/100/200/200", "track1", "artist1",
         const Duration(minutes: 6, seconds: 30)),
-    Track("https://picsum.photos/id/2/200/200", "track2", "artist2",
+    Track("https://picsum.photos/id/200/200/200", "track2", "artist2",
         const Duration(minutes: 5, seconds: 30)),
-    Track("https://picsum.photos/id/3/200/200", "track3", "artist3",
+    Track("https://picsum.photos/id/300/200/200", "track3", "artist3",
         const Duration(minutes: 5, seconds: 30)),
-    Track("https://picsum.photos/id/4/200/200", "track4", "artist4",
+    Track("https://picsum.photos/id/400/200/200", "track4", "artist4",
         const Duration(minutes: 5, seconds: 30)),
   ];
+
+  // 表示するカテゴリのデータ
+  final List<String> category = ["クラシック", "カントリー", "ポップ", "ロック", "ジャズ", "パンク"];
 
   // ボトムシートのアイテム
   final List<BottomNavigationBarItem> _bottomNavigationBarItems = [
@@ -139,16 +140,44 @@ class _MyHomePageState extends State<MyHomePage> {
                 mainAxisSpacing: 10,
                 crossAxisSpacing: 10,
               ),
-              itemCount: 10,
+              itemCount: category.length,
               itemBuilder: (context, index) {
                 return Container(
                   decoration: BoxDecoration(
                     border: Border.all(color: Colors.black12),
                     borderRadius: BorderRadius.circular(15),
-                    color: index.isEven ? Colors.blue : Colors.yellow,
+                    // color: index.isEven ? Colors.blue : Colors.yellow,
+                    // グラデーション
+                    gradient: LinearGradient(
+                      begin: FractionalOffset.topLeft,
+                      end: FractionalOffset.bottomRight,
+                      // colors: [Colors.redAccent, Colors.orangeAccent],
+                      colors: () {
+                        switch (index) {
+                          case 0:
+                            return [Colors.deepPurple, Colors.deepPurple[900]!];
+                          case 1:
+                            return [Colors.yellow, Colors.yellow[900]!];
+                          case 2:
+                            return [Colors.pink, Colors.pink[900]!];
+                          case 3:
+                            return [Colors.blue, Colors.blue[900]!];
+                          case 4:
+                            return [Colors.lightGreen, Colors.lightGreen[900]!];
+                          case 5:
+                            return [Colors.red, Colors.red[900]!];
+                          default:
+                            return [Colors.redAccent, Colors.orangeAccent];
+                        }
+                      }(),
+                      stops: const [
+                        0.0,
+                        1.0,
+                      ],
+                    ),
                   ),
                   child: Center(
-                    child: Text(items[index]),
+                    child: Text(category[index]),
                   ),
                 );
               },
