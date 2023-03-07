@@ -18,18 +18,13 @@ class _PlayerPageState extends State<PlayerPage> {
   // double _endValue = 0.0;
   //  スライダーの値を変更時
   void _changeSlider(double e) => setState(() {
-        debugPrint("_changeSlider");
         _value = e;
-        debugPrint("_value:$_value");
         currentPlayTime = Duration(seconds: _value.toInt());
-        debugPrint("currentPlayTime:$currentPlayTime");
       });
   // void _startSlider(double e) => setState(() {
-  //       debugPrint("_startSlider");
   //       _startValue = e;
   //     });
   // void _endSlider(double e) => setState(() {
-  //       debugPrint("_endSlider");
   //       _endValue = e;
   //     });
 
